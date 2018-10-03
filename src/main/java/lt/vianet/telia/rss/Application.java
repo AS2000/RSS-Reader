@@ -1,11 +1,13 @@
 package lt.vianet.telia.rss;
 
-import lt.vianet.telia.rss.Actions.Actions;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
-        new Actions().startApp();
+        SpringApplication.run(Application.class, args);
 
     }
 }
