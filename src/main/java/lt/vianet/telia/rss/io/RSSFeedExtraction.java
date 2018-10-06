@@ -124,14 +124,8 @@ public class RSSFeedExtraction {
 
 
     private Date getDate(String dateFromFeed) {
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.UK);
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-            return dateFormat.parse(dateFromFeed);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        return new DateFormatConverter(dateFromFeed).getDate();
     }
 
 

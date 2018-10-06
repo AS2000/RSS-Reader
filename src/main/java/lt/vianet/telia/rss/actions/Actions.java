@@ -9,16 +9,17 @@ import javax.annotation.PostConstruct;
 public class Actions {
 
     @PostConstruct
-    public void startApp() {
+    public RssFeed startApp() {
 
-        doActions();
+        return doActions();
     }
 
-    private void doActions() {
+    private RssFeed doActions() {
 
         RssFeed rssFeed = new DataFromNewsPageRSS("https://www.15min.lt/rss", "15min.lt").doActions();
 
         //TODO delete print
 //        new PrintAll().PrintArray(rssFeed);
+        return rssFeed;
     }
 }
