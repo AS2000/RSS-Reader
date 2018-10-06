@@ -1,4 +1,4 @@
-package lt.vianet.telia.rss.Actions;
+package lt.vianet.telia.rss.actions;
 
 
 import lt.vianet.telia.rss.io.RSSFeedExtraction;

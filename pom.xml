@@ -6,71 +6,122 @@
 
     <groupId>lt.vianet.telia.rss</groupId>
     <artifactId>Telia_RSS</artifactId>
+
+    <version>v0.2</version>
+
     <packaging>war</packaging>
-    <version>v0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>lt.vianet.telia.rss.Application</start-class>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <tomcat.version>9.0.12</tomcat.version>
     </properties>
 
-    <dependencies>
-        <!--
-        https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-        -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version>
+        <relativePath/>
+    </parent>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.0.RELEASE</version>
+            <version>2.0.5.RELEASE</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.0.0.RELEASE</version>
+            <artifactId>spring-boot</artifactId>
+            <version>2.0.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
+
+
+        <!--spring-boot-starter-tomcat is included in spring-boot-starter-spring, but we setting it, because
+        we need to set <scope>provided</scope> to create a .war file with a Maven command and
+        deploy it to a standalone Tomcat or run Application.java as a java application.-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>2.0.5.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- @Inject -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
 
     </dependencies>
 
 
     <build>
-        <finalName>RSS</finalName>
+
+        <finalName>rss</finalName>
+
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.1</version>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <warSourceDirectory>web</warSourceDirectory>
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.0.5.RELEASE</version>
+            </plugin>
+        </plugins>
+
+<!--            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <!--   <url>http://localhost:8080/</url> -->
-                      <server>mytomcat7</server>
-                      <path>/</path>
-                  </configuration>
-              </plugin>
-              <plugin>
-                  <groupId>org.springframework.boot</groupId>
-                  <artifactId>spring-boot-maven-plugin</artifactId>
-                  <version>2.0.0.RELEASE</version>
-              </plugin>
-          </plugins>
+                    &lt;!&ndash;   <url>http://localhost:8080/</url> &ndash;&gt;
+                    <server>mytomcat7</server>
+                    <path>/</path>
+                </configuration>
+            </plugin>-->
+
       </build>
 
 

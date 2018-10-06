@@ -1,12 +1,14 @@
-package lt.vianet.telia.rss.Actions;
+package lt.vianet.telia.rss.actions;
 
-import lt.vianet.telia.rss.io.PrintAll;
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
 import org.springframework.stereotype.Controller;
+
+import javax.annotation.PostConstruct;
 
 @Controller
 public class Actions {
 
+    @PostConstruct
     public void startApp() {
 
         doActions();
