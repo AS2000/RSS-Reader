@@ -26,13 +26,12 @@
 <tr>
     <td>
 
-<c:if test="${!empty rssFeed}">
         <table class="table-links">
         <tr>
             <th width="60">Feed Name: </th>
             <td>${rssFeed.name}</td>
             <td colspan="2">
-                <form name="backForm" action="/feedlist" method="post">
+                <form name="backForm" action="feedlist" method="post">
                	    <input type="submit" value="Back to List" />
                	</form>
             </td>
@@ -46,7 +45,7 @@
             <th>Update Time: </th>
             <td>${updateTime}</td>
             <td colspan="2">
-                <form name="removeForm" action="/remove/${id}" method="post">
+                <form name="removeForm" action="remove/${id}" method="post">
                	    <input type="submit" value="Remove Feed" />
                	</form>
             </td>
@@ -76,7 +75,6 @@
     </td>
 </tr>
 </table>
-</c:if>
 
 </body>
 </html>

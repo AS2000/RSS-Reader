@@ -2,11 +2,13 @@ package lt.vianet.telia.rss.spring;
 
 import lt.vianet.telia.rss.actions.Actions;
 import lt.vianet.telia.rss.io.DateFormatConverter;
+import lt.vianet.telia.rss.rss_feeds.FeedLink;
 import lt.vianet.telia.rss.rss_feeds.IFeedLink;
 import lt.vianet.telia.rss.rss_feeds.IRssFeed;
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +47,7 @@ public class SpringController {
     }
 
 
-    @RequestMapping(value = "/feed/${id}", method = RequestMethod.GET)
+    @RequestMapping("/feed/${id}")
     public String feed(@PathVariable("id") int id, Model model) {
 
         model.addAttribute("rssFeed", rssFeedList.get(id));
@@ -55,9 +57,25 @@ public class SpringController {
     }
 
 
-    @RequestMapping(value = "/addfeed", method = RequestMethod.POST)
-    public String addFeed(@ModelAttribute("feed") IFeedLink feed) {
+    @RequestMapping("/newfeed")
+    public String newFeed() {
 
+        return "addfeed";
+    }
+
+    @ModelAttribute("feed")
+    public FeedLink createFeed(){
+        return new FeedLink();
+    }
+
+
+    @RequestMapping(value = "/addfeed", method = RequestMethod.POST)
+    public String addFeed(@ModelAttribute("feed") IFeedLink feed, BindingResult result) {
+
+        // By default, Spring MVC throws an exception when errors occur during request binding. This usually not what we want, instead, we should be presenting these errors to the user.
+        if (result.hasErrors()) {
+            return "error";
+        }
         if (!feed.getName().isEmpty() && !feed.getUrl().isEmpty()) {
 
             // Adding new RSSFeed Object
@@ -68,7 +86,7 @@ public class SpringController {
     }
 
 
-    @RequestMapping(value = "/remove/${id}", method = RequestMethod.POST)
+    @RequestMapping("/remove/${id}")
     public String removeFeed(@PathVariable("id") int id) {
 
         if (rssFeedList.get(id) != null) {

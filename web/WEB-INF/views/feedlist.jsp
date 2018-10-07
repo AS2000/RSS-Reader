@@ -34,7 +34,7 @@
         <table>
         <tr>
             <td>
-                <form name="addForm" action="/addfeed" method="post">
+                <form name="addForm" action="newfeed" method="post">
                	    <input type="submit" value="Add Feed" />
                	</form>
             </td>
@@ -49,13 +49,17 @@
         <table class="tg">
 
         <c:forEach var="i" begin="0" end ="${fn:length(rssFeedList)-1}">
+
+        <form name="selectForm${i}" action="feed/${i}" method="post">
             <tr>
                  <th width="20">Title: </th>
-                 <td width="80"><a href="">${rssFeedList[i].name}</a></td>
+                 <td width="80"><input type="submit" value="${rssFeedList[i].name}"></td>
                  <th width="20">URL: </th>
-                 <td><a href="">${rssFeedList[i].url}</a></td>
+                 <td>${rssFeedList[i].url}</td>
 
             </tr>
+        </form>
+
         </c:forEach>
 
         </table>

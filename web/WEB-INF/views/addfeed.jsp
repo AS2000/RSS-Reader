@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 <html>
 <head>
@@ -24,8 +26,7 @@
 
 <P>  Please provide new XML RSS Feed Information </P>
 
-<c:url var="addAction" value="/addfeed" ></c:url>
-<form:form action="${addAction}" commandName="feed">
+<form:form action="addfeed" modelAttribute="feed" method="POST">
 
 <table>
 <tr>
@@ -35,7 +36,7 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="url" />
+			<form:input path="url" size="60" />
 		</td>
 </tr>
 <tr>
@@ -45,23 +46,19 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="name" />
+			<form:input path="name" size="60" />
 		</td>
 </tr>
 
 	<tr>
 		<td colspan="2">
-			<c:if test="${!empty person.name}">
-				<input type="submit" value="<spring:message text="Add Feed"/>" />
-			</c:if>
+				<input type="submit" value="Add Feed" />
 		</td>
 	</tr>
 
 
-
-
 </table>
-</c:if>
+</form:form>
 
 </body>
 </html>
