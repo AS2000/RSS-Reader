@@ -1,14 +1,15 @@
 package lt.vianet.telia.rss.actions;
 
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
-import org.springframework.stereotype.Controller;
 
-import javax.annotation.PostConstruct;
-
-@Controller
 public class Actions {
+    private final String feedURL;
+    private final String feedName;
 
-    @PostConstruct
+    public Actions(String feedURL, String feedName) {
+        this.feedURL = feedURL;
+        this.feedName = feedName;
+    }
     public RssFeed startApp() {
 
         return doActions();
@@ -16,7 +17,7 @@ public class Actions {
 
     private RssFeed doActions() {
 
-        RssFeed rssFeed = new DataFromNewsPageRSS("https://www.15min.lt/rss", "15min.lt").doActions();
+        RssFeed rssFeed = new DataFromNewsPageRSS(feedURL, feedName).doActions();
 
         //TODO delete print
 //        new PrintAll().PrintArray(rssFeed);

@@ -19,12 +19,10 @@
 </head>
 <body>
 <h1>
-	News Page RSS Feeder
+	News page RSS feed details
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-
-<table class="tg">
+<table>
 <tr>
     <td>
 
@@ -33,14 +31,25 @@
         <tr>
             <th width="60">Feed Name: </th>
             <td>${rssFeed.name}</td>
+            <td colspan="2">
+                <form name="backForm" action="/feedlist" method="post">
+               	    <input type="submit" value="Back to List" />
+               	</form>
+            </td>
         </tr>
         <tr>
             <th>Feed URL: </th>
             <td>${rssFeed.url}</td>
+            <td></td>
         </tr>
         <tr>
             <th>Update Time: </th>
             <td>${updateTime}</td>
+            <td colspan="2">
+                <form name="removeForm" action="/remove/${id}" method="post">
+               	    <input type="submit" value="Remove Feed" />
+               	</form>
+            </td>
         </tr>
         </table>
 

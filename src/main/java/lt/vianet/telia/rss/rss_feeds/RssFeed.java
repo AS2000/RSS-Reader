@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RssFeed {
+public class RssFeed implements IRssFeed {
 
     private String name;
     private URL url;
