@@ -2,6 +2,9 @@ package lt.vianet.telia.rss.io;
 
 import lt.vianet.telia.rss.rss_feeds.Article;
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -11,12 +14,8 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+
 
 public class RSSFeedExtraction {
 
@@ -116,7 +115,7 @@ public class RSSFeedExtraction {
 
 
         } catch (XMLStreamException e) {
-            throw new RuntimeException(e);
+            return null;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

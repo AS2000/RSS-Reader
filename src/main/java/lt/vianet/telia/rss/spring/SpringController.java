@@ -79,12 +79,20 @@ public class SpringController {
         if (!feed.getName().isEmpty() && !feed.getUrl().isEmpty()) {
 
             // Adding new RSSFeed Object
-            rssFeedList.add(getRssData(feed.getUrl().trim(), feed.getName().trim()));
+            RssFeed rssFeed = getRssData(feed.getUrl().trim(), feed.getName().trim());
+            if (rssFeed != null ){
+            rssFeedList.add(rssFeed);
+            } else {
+                return "redirect:/errorpage";
+            }
         }
-
         return "redirect:/";
     }
 
+    @RequestMapping("errorpage")
+    public String errorFeed() {
+        return "error";
+    }
 
     @RequestMapping("/feed/remove/{id}")
     public String removeFeed(@PathVariable("id") int id) {
