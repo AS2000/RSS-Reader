@@ -5,11 +5,13 @@ import lt.vianet.telia.rss.io.DateFormatConverter;
 import lt.vianet.telia.rss.rss_feeds.FeedLink;
 import lt.vianet.telia.rss.rss_feeds.IFeedLink;
 import lt.vianet.telia.rss.rss_feeds.IRssFeed;
-import lt.vianet.telia.rss.rss_feeds.RssFeed;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -43,10 +45,12 @@ public class SpringController {
         return "feedlist";
     }
 
+
     @RequestMapping("/feed/feedlist")
     public String toFeedList() {
         return "redirect:/";
     }
+
 
     @RequestMapping(value = "/feed/{id}", method = RequestMethod.POST)
     public String feed(@PathVariable("id") int id, Model model) {
@@ -63,8 +67,9 @@ public class SpringController {
         return "addfeed";
     }
 
+
     @ModelAttribute("feed")
-    public FeedLink createFeed(){
+    public FeedLink createFeed() {
         return new FeedLink();
     }
 
@@ -79,9 +84,9 @@ public class SpringController {
         if (!feed.getName().isEmpty() && !feed.getUrl().isEmpty()) {
 
             // Adding new RSSFeed Object
-            RssFeed rssFeed = getRssData(feed.getUrl().trim(), feed.getName().trim());
-            if (rssFeed != null ){
-            rssFeedList.add(rssFeed);
+            IRssFeed rssFeed = getRssData(feed.getUrl().trim(), feed.getName().trim());
+            if (rssFeed != null) {
+                rssFeedList.add(rssFeed);
             } else {
                 return "redirect:/errorpage";
             }
@@ -89,10 +94,12 @@ public class SpringController {
         return "redirect:/";
     }
 
+
     @RequestMapping("errorpage")
     public String errorFeed() {
         return "error";
     }
+
 
     @RequestMapping("/feed/remove/{id}")
     public String removeFeed(@PathVariable("id") int id) {
@@ -107,7 +114,7 @@ public class SpringController {
     }
 
 
-    private RssFeed getRssData(String feedURL, String feedName) {
+    private IRssFeed getRssData(String feedURL, String feedName) {
         return new Actions(feedURL, feedName).startApp();
     }
 

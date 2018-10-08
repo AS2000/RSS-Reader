@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lt.vianet.telia.rss</groupId>
     <artifactId>Telia_RSS</artifactId>
 
-    <version>v0.2</version>
+    <version>v0.3</version>
 
     <packaging>war</packaging>
 
@@ -44,18 +44,6 @@
             <version>2.0.4.RELEASE</version>
         </dependency>
 
-
-        <!--spring-boot-starter-tomcat is included in spring-boot-starter-spring, but we setting it, because
-        we need to set <scope>provided</scope> to create a .war file with a Maven command and
-        deploy it to a standalone Tomcat or run Application.java as a java application.-->
-
-<!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <version>2.0.5.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>-->
-
         <!-- @Inject -->
         <dependency>
             <groupId>javax.inject</groupId>
@@ -81,7 +69,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
 
 
     </dependencies>
@@ -111,18 +98,6 @@
             </plugin>
         </plugins>
 
-<!--            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    &lt;!&ndash;   <url>http://localhost:8080/</url> &ndash;&gt;
-                    <server>mytomcat7</server>
-                    <path>/</path>
-                </configuration>
-            </plugin>-->
+    </build>
 
-      </build>
-
-
-  </project>
+</project>

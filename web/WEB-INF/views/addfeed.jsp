@@ -1,64 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 <html>
 <head>
 	<title>RSS Feeder</title>
 		<style type="text/css">
-				.tg {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-        		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-        		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+            #border { border-radius: 15px; border: 1px solid  #808080; padding: 20px; width: 460px; height: 180px; }
+            #tablepad { padding-top: 10px; padding-bottom: 20px;}
+            .linespad tr{ height: 30px;}
 
-        		.table-links th{text-align: left;}
-        		.tg .table-links {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-                .table-links td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-        		.table-links th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+            #big {font-family:Arial, sans-serif; font-size:22px; font-weight: bold;}
+            #small {font-family:Arial, sans-serif; font-size:16px; font-style:italic; font-weight: bold;}
+            #title {font-family:Arial, sans-serif; font-size:16px; font-weight: bold;}
 
-        		.tg .table-links .tg-4eph{background-color:#f9f9f9}
+            #button { border-radius: 5px; border: 1px solid  #808080; width: 200px;  height: 32px; font-family:Arial, sans-serif; font-size:16px; text-align: center; background-image: linear-gradient(#FCFCFC,#CDCDCD ); font-weight: bold;cursor: pointer;}
 		</style>
 </head>
 <body>
-<h1>
-	Add XML RSS Feed
-</h1>
+<table id="border">
 
-<P>  Please provide new XML RSS Feed Information </P>
+<tr><td><p id="big">Add XML RSS Feed</p></td></tr>
 
+<tr><td><p id="small">Please provide new XML RSS Feed Information </p></td></tr>
+
+<tr>
+    <td>
 <form:form action="addfeed" modelAttribute="feed" method="POST">
 
-<table>
-<tr>
-		<td>
-			<form:label path="url">
-				<spring:message text="XML RSS Feed URL:"/>
-			</form:label>
-		</td>
-		<td>
-			<form:input path="url" size="60" />
-		</td>
-</tr>
-<tr>
-		<td>
-			<form:label path="name">
-				<spring:message text="XML RSS Feed Name:"/>
-			</form:label>
-		</td>
-		<td>
-			<form:input path="name" size="60" />
-		</td>
-</tr>
+        <table id="tablepad" class="linespad">
+        <tr>
+		    <td width="20">
+			    <form:label path="url">
+				    <p id="title">XML RSS Feed URL:</p>
+    			</form:label>
+	    	</td>
+		    <td>
+			<form:input path="url" size="26" />
+		    </td>
+        </tr>
+        <tr>
+		    <td>
+			    <form:label path="name">
+				    <p id="title">XML RSS Feed Name:</p>
+			    </form:label>
+		    </td>
+		    <td>
+			    <form:input path="name" size="26" />
+		    </td>
+        </tr>
 
-	<tr>
-		<td colspan="2">
-				<input type="submit" value="Add Feed" />
-		</td>
-	</tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" id="button" value="Add Feed" />
+            </td>
+        </tr>
+        </table>
 
-
-</table>
 </form:form>
+    </td>
+</tr>
+</table>
 
 </body>
 </html>

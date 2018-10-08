@@ -47,8 +47,9 @@ public class DateFormatConverter {
 
     private String formatDate() {
 
-        DateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy HH:mm:ss", Locale.UK);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy.MMM.dd HH:mm:ss", Locale.UK);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
         return dateFormat.format(rawDate);
     }
 }

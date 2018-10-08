@@ -3,6 +3,7 @@ package lt.vianet.telia.rss.rss_feeds;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class Article implements IArticle {
     private String title;
     private URL url;
@@ -12,14 +13,12 @@ public class Article implements IArticle {
 
     public Article(String title, String feedURL) {
         try {
-
             this.title = title;
             this.url = new URL(feedURL);
 
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 

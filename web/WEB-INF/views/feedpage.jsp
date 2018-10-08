@@ -15,12 +15,12 @@
         		.table-buttons th{text-align: left;vertical-align:middle;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
 
         		.tg .table-links .tg-4eph{background-color:#f9f9f9}
+        		#big {font-family:Arial, sans-serif; font-size:22px; font-weight: bold;}
 		</style>
 </head>
 <body>
-<h1>
-	News page RSS feed details
-</h1>
+
+<p id="big">RSS Feed Details<p>
 
 <table>
 <tr>
@@ -54,7 +54,6 @@
 
     </td>
 </tr>
-
 <tr>
     <td>
         <table class="tg">

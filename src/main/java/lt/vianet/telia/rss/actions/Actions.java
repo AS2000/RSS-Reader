@@ -1,6 +1,7 @@
 package lt.vianet.telia.rss.actions;
 
-import lt.vianet.telia.rss.rss_feeds.RssFeed;
+import lt.vianet.telia.rss.rss_feeds.IRssFeed;
+
 
 public class Actions {
     private final String feedURL;
@@ -10,17 +11,16 @@ public class Actions {
         this.feedURL = feedURL;
         this.feedName = feedName;
     }
-    public RssFeed startApp() {
+
+    public IRssFeed startApp() {
 
         return doActions();
     }
 
-    private RssFeed doActions() {
+    private IRssFeed doActions() {
 
-        RssFeed rssFeed = new DataFromNewsPageRSS(feedURL, feedName).doActions();
+        IRssFeed rssFeed = new DataFromNewsPageRSS(feedURL, feedName).doActions();
 
-        //TODO delete print
-//        new PrintAll().PrintArray(rssFeed);
         return rssFeed;
     }
 }

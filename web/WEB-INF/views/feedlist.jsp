@@ -16,16 +16,18 @@
         		.table-links th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
 
         		.tg .table-links .tg-4eph{background-color:#f9f9f9}
+
+	            #big {font-family:Arial, sans-serif; font-size:22px; font-weight: bold;}
+                #small {font-family:Arial, sans-serif; font-size:16px; font-style:italic; font-weight: bold;}
 		</style>
 </head>
 <body>
-<h1>
-	News Pages RSS Feed List
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
 
 <table>
+<tr><td><p id="big">XML RSS Feed</p></td></tr>
+
+<tr><td><p id="small">Please find the list of all available feeds</p></td></tr>
+
 <tr>
     <td>
         <table>
@@ -64,8 +66,8 @@
     </c:if>
     </td>
 </tr>
-</table>
 
+</table>
 
 </body>
 </html>

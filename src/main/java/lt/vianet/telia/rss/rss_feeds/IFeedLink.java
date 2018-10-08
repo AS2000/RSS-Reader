@@ -5,9 +5,9 @@ public interface IFeedLink {
 
     public String getName();
 
-    public String getUrl();
-
     public void setName(String name);
 
+    public String getUrl();
+
     public void setUrl(String url);
-    }
+}

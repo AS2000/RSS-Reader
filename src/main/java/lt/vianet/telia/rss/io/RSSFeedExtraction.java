@@ -2,9 +2,6 @@ package lt.vianet.telia.rss.io;
 
 import lt.vianet.telia.rss.rss_feeds.Article;
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -43,8 +40,6 @@ public class RSSFeedExtraction {
         final String LINK = "link";
         final String PUB_DATE = "pubDate";
 
-        int qtyOfArticles = 5;
-
         try {
             String feedTitle = "";
             String feedLink = "";
@@ -78,8 +73,6 @@ public class RSSFeedExtraction {
             // Setting Publication date
             rssFeed.setUpdateTime(getDate(dateFromFeed));
 
-            int count = 0;
-
             // Getting RSS <item> data
             while (eventReader.hasNext()) {
 
@@ -105,9 +98,6 @@ public class RSSFeedExtraction {
 
                     // Setting RSS data (Article Title & Link to the Object
                     rssFeed.getArticles().add(new Article(feedTitle, feedLink));
-
-                    // 5 Articles
-                    count++;
                 }
             }
 

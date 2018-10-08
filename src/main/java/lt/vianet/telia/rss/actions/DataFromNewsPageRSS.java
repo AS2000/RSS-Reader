@@ -1,8 +1,8 @@
 package lt.vianet.telia.rss.actions;
 
-
 import lt.vianet.telia.rss.io.RSSFeedExtraction;
 import lt.vianet.telia.rss.rss_feeds.RssFeed;
+
 
 public class DataFromNewsPageRSS {
 
