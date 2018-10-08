@@ -9,10 +9,7 @@ import lt.vianet.telia.rss.rss_feeds.RssFeed;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -46,20 +43,23 @@ public class SpringController {
         return "feedlist";
     }
 
+    @RequestMapping("/feed/feedlist")
+    public String toFeedList() {
+        return "redirect:/";
+    }
 
-    @RequestMapping("/feed/${id}")
+    @RequestMapping(value = "/feed/{id}", method = RequestMethod.POST)
     public String feed(@PathVariable("id") int id, Model model) {
 
         model.addAttribute("rssFeed", rssFeedList.get(id));
         model.addAttribute("updateTime", getFormatedDate(rssFeedList.get(id).getUpdateTime()));
 
-        return "feed";
+        return "feedpage";
     }
 
 
     @RequestMapping("/newfeed")
     public String newFeed() {
-
         return "addfeed";
     }
 
@@ -86,7 +86,7 @@ public class SpringController {
     }
 
 
-    @RequestMapping("/remove/${id}")
+    @RequestMapping("/feed/remove/{id}")
     public String removeFeed(@PathVariable("id") int id) {
 
         if (rssFeedList.get(id) != null) {

@@ -28,9 +28,6 @@
 <table>
 <tr>
     <td>
-
-<c:if test="${!empty rssFeedList}">
-
         <table>
         <tr>
             <td>
@@ -40,33 +37,35 @@
             </td>
         </tr>
         </table>
-
     </td>
 </tr>
-
 <tr>
     <td>
+    <c:if test="${!empty rssFeedList}">
+
         <table class="tg">
 
         <c:forEach var="i" begin="0" end ="${fn:length(rssFeedList)-1}">
 
         <form name="selectForm${i}" action="feed/${i}" method="post">
             <tr>
-                 <th width="20">Title: </th>
-                 <td width="80"><input type="submit" value="${rssFeedList[i].name}"></td>
-                 <th width="20">URL: </th>
+                 <th width="20px">Title: </th>
+                 <td width="80px" align="center"><input type="submit" value="${rssFeedList[i].name}"></td>
+                 <th width="20px">Article&nbsp;Qty.: </th>
+                 <td width="20px" align="center">${fn:length(rssFeedList[i].articles)}</td>
+                 <th width="20px">URL: </th>
                  <td>${rssFeedList[i].url}</td>
-
             </tr>
         </form>
 
         </c:forEach>
 
         </table>
+    </c:if>
     </td>
 </tr>
 </table>
-</c:if>
+
 
 </body>
 </html>
