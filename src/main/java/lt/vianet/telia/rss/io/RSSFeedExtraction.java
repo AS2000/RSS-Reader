@@ -81,7 +81,7 @@ public class RSSFeedExtraction {
             int count = 0;
 
             // Getting RSS <item> data
-            while (eventReader.hasNext() && count < qtyOfArticles) {
+            while (eventReader.hasNext()) {
 
                 event = eventReader.nextEvent();
 
