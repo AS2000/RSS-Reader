@@ -101,6 +101,8 @@ public class RSSFeedExtraction {
                 }
             }
 
+            eventReader.close();
+
             return rssFeed;
 
 
