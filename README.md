@@ -8,3 +8,5 @@ Usage:
 5. Tomcat server will automaticaly add project to the server link: localhost:80/rss/ (on the local server), or YourServerIP:80/rss/ (on dedicated server).
 
 Please be noticed: Default Tomcat port is 8080, If you want to use 80 port, please configure Tomact /conf/server.xml file.
+
+#App was creaded by Anton Šepetko in 2018 as a task for the potential Employer.
